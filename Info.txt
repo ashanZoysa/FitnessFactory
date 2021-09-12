@@ -1,0 +1,9 @@
+Mongodb
+user: FFuser
+password: 123
+
+connection string: mongodb+srv://FFuser:<password>@ffdb.tj49d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+photo credits
+login page picture: Photo by Jelmer Assink on Unsplash
+https://unsplash.com/@jelmerassink?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jelmer Assink</a> on <a href="https://unsplash.com/s/photos/gym?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText
