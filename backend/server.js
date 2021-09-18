@@ -24,7 +24,6 @@ app.use(cookieParser("secretcode"))
 app.use(passport.initialize());//initialise passport
 app.use(passport.session());//initialise passport session
 require('./passportConfig')(passport);//require passport config file and pass instance of passport
-
 //-------------------------START OF ROUTES------------------------------------
 const userRouter = require("./routes/user");
 

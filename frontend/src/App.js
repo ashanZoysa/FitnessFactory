@@ -1,11 +1,9 @@
 import './App.css';
 import CreateAccount from './components/CreateAccount';
-import Header from './components/NavBar';
+import Home from './components/Home';
 import Login from './components/Login';
-//import Login from './components/Login';
+import ManageUsers from './components/ManageUsers';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-//import NavBar from './components/NavBar';
-//import { Navbar } from 'react-bootstrap';
 
 function App() {
   return (
@@ -14,7 +12,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={Login}/>
           <Route path='/createAccountPage' component={CreateAccount}/>
-          <Route path='/homePage' component={Header}/>
+          <Route path='/homePage' component={Home}/>
+          <Route path='/manageUsers' component={ManageUsers}/>
         </Switch>
       </div>
     </Router>

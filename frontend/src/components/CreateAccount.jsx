@@ -10,6 +10,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 //custom styles
 import '../styles/CreateAccount.css';
+import NavBar from './NavBar';
+import Footer from './Footer';
 
 function CreateAccount(){
 
@@ -53,6 +55,7 @@ function CreateAccount(){
 
     return (
         <div>
+            <NavBar/>
             <div className='createAccountBlock'>
                 <h1>Create Account</h1>
 
@@ -118,6 +121,7 @@ function CreateAccount(){
                     </Container>
                 </form>
             </div>
+            <Footer/>
         </div>
     );
 }

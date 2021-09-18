@@ -24,13 +24,16 @@ module.exports =  function(passport){
     );
 
     //serialise user
-    passport.serializeUser((user,cb) => {
-        cb(null, user.id); //create cookie with userid
-    })
+    passport.serializeUser((user,done) => {
+        // cb(null, user.id); //create cookie with userid
+        done(null, user.id);
+     })
+
     //unravel cookie
     passport.deserializeUser((id, cb) => {
         User.findOne({_id: id}, (err, user) => {
-            cb(err, user);
+            //cb(err, user);
         });
     });
+
 }

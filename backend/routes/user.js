@@ -48,7 +48,9 @@ router.route("/login").post( (req, res, next) => {
         else if (user){
             req.login(user, err => {
                 if(err) console.log(err);
+                req.session.user = req.user;
                 res.send('Successful login');
+                console.log(req.session);
                 console.log(req.user.toObject().accLevel);
             })
         }
@@ -61,13 +63,62 @@ router.route('/logout').delete( (req, res, next) => {
     res.send('Successful log out');
 })
 
+//Get users
+router.get('/getUser', (req,res) => {
+    User.find().exec((err, users) => {
+        if(err){
+            return res.status(400).json({
+                err:err
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            existingUsers: users
+        })
+    })
+})
+
+//update users
+router.put('/updateUserLevel/:id', (req, res) => {
+    const accl = Number(req.body.accLevel);
+
+    User.findByIdAndUpdate(req.params.id, { accLevel: accl}, (err, docs) => {
+        if (err){
+            console.log(err);
+            res.json("Update unsccessful")
+        }
+        else{
+            res.json(docs)
+        }
+    } 
+    
+    )
+})
+
+//delete users
+router.delete('/deleteUser/:id', (req, res) => {
+    User.findByIdAndRemove(req.params.id, (err, deletedUser)=>{
+        if(err){
+            console.log(err);
+            return res.status(400).json({
+                message: 'Delete unsuccessful', err
+            })
+        }
+        else{
+            return res.status(400).json({
+                message: 'Delete successful', deletedUser
+            })
+        }
+    })
+})
+
 //to check if authenticated
-function checkAuthenticated(req, res, next) {
+/*function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()){
-        return res.redirect('/homePage')
+        return res.redirect('/homePage');
     }
-    next()
-}
+    next();
+}*/
 
 module.exports = router;
 

@@ -36,7 +36,7 @@ function NavBar() {
               <Nav.Link href="#link">Store</Nav.Link>
 
               <NavDropdown title="Admin" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">User Accounts</NavDropdown.Item>
+                <NavDropdown.Item href="/createAccountPage">User Accounts</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.1">Suppliers</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.1">Inventory</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.1">Financial</NavDropdown.Item>

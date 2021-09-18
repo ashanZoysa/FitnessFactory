@@ -7,8 +7,6 @@ import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import '../styles/Login.css';
 
-import { Link } from "react-router-dom";
-
 function Login(){
     //states
     const [username, setUsername] = useState("");
@@ -36,8 +34,8 @@ function Login(){
         <div className="loginBody">
             <div className="loginBlock">
 
-                <div className="logoBox">
-                    <h1>Fitness Factory</h1>
+                <div>
+                    <h1 className="logoBox">Fitness Factory</h1>
                 </div>
 
                 <Form onSubmit={login}>
@@ -62,13 +60,6 @@ function Login(){
                             Log In
                         </Button>
                     </div>
-
-                    <div className='flex-container'>
-                        <Link to="/createAccountPage">
-                            <li>Register</li>
-                        </Link>
-                    </div>
-                
                 </Form>
             </div>
         </div>
