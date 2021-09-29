@@ -1,0 +1,31 @@
+body{
+
+	background-image: url('../images/gym1.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.transbox1{
+
+	width: 100%;
+	font-family: Arial;
+	height: 100%;
+	opacity: 0.89;
+	background-color:#000000; 
+	border: 1px solid black;
+	padding-top:20px;
+}
+
+.transbox2{
+
+	width: 100%;
+	font-family: Arial;
+	height: 100%;
+	opacity: 0.85;
+	background-color:#000000; 
+	border: 1px solid black;
+	padding-top:20px;
+	
+
+}
