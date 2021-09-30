@@ -78,6 +78,18 @@ export default class Home extends Component {
   }
 
 
+createAndDownloadPaymentPdf = () =>{
+    axios.post('http://localhost:8000/payments/createPdf',this.state)
+}
+
+
+
+
+
+
+
+
+
   render() {
 
     return (
@@ -98,12 +110,12 @@ export default class Home extends Component {
             />
           </div>
         </div><hr  style={{ color: "#03fcf4" }}/>
+
         <div className="transbox1" >
         <table className="table table-hover" style={{ marginTop: '40px'}}>
           <thead style={{color:"#00ff6a"}}>
             <tr>
               <th scope="col">No.</th>
-              <th scope="col">User ID</th>
               <th scope="col">User Name</th>
               <th scope="col">Payment ID</th>
               <th scope="col">Payment Date</th>
@@ -117,7 +129,6 @@ export default class Home extends Component {
             {this.state.payments.map((payments, index) => (
               <tr key={index}  style={{color:"#00fff2"}}>
                 <th scope="row">{index + 1}</th>
-                <td>{payments.userId}</td>
                 <td>{payments.userName}</td>
                 <td style={{hover:"#ff00b3",textDecoration:'none'}}>
                   <Link to={`/payment/${payments._id}`} style={{ textDecoration: 'none' }}>
@@ -127,7 +138,7 @@ export default class Home extends Component {
                 <td>{Moment(payments.paymentDate).format("YYYY-MM-DD")}</td>
                 <td>{payments.category}</td>
                 <td>{payments.description}</td>
-                <td>{payments.amount}</td>
+                <td>{payments.amount.toFixed(2)}</td>
                 <td>
                   <Link className="btn btn-warning" to={`/edit/${payments._id}`}>
                     <i className="fas fa-edit"></i>&nbsp;Edit
@@ -146,7 +157,8 @@ export default class Home extends Component {
         </div>
         <br/>
 
-        <button className="btn btn-success"><Link to="/add" style={{ textDecoration: 'none', color: 'white' }}>Add New Payment Record</Link></button>
+        <button className="btn btn-success"><Link to="/add" style={{ textDecoration: 'none', color: 'white' }}>Add New Payment Record</Link></button><br/><br/>
+        <button className="btn btn-primary" onClick={this.createAndDownloadPaymentPdf}>Download PDF&nbsp;<i class="fas fa-file-download"></i></button>
 
       </div>
       

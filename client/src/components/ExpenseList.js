@@ -118,7 +118,7 @@ export default class ExpenseList extends Component {
           </thead>
           <tbody>
             {this.state.expenses.map((expenses, index) => (
-              <tr key={index} style={{color:"#6fff00"}}>
+              <tr key={index} style={{color:"#dbfc03"}}>
                 <th scope="row">{index + 1}</th>
                 <td>
                   <Link to={`/expense/${expenses._id}`} style={{ textDecoration: 'none' }}>
@@ -128,7 +128,7 @@ export default class ExpenseList extends Component {
                 <td>{expenses.expenseType}</td>
                 <td>{Moment(expenses.expenseDate).format("YYYY-MM-DD")}</td>
                 <td>{expenses.expenseDescription}</td>
-                <td>{expenses.expenseAmount}</td>
+                <td>{expenses.expenseAmount.toFixed(2)}</td>
                 <td>
                   <Link className="btn btn-warning" to={`/editExpense/${expenses._id}`}>
                     <i className="fas fa-edit"></i>&nbsp;Edit

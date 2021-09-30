@@ -7,7 +7,6 @@ const router = express.Router();
 //save payments
 router.post('/payment/save',(req,res)=>{
 
-    const userId = req.body.userId;
     const userName = req.body.userName;
     const paymentDate = Date.parse(req.body.paymentDate);
     const category = req.body.category;
@@ -15,7 +14,6 @@ router.post('/payment/save',(req,res)=>{
     const amount = Number(req.body.amount);
 
     const newPayment = new Payments({
-        userId,
         userName,
         paymentDate,
         category,

@@ -11,7 +11,6 @@ export default class CreatePayment extends Component{
     constructor(props){
         super(props);
 
-        this.onChangeUserId = this.onChangeUserId.bind(this);
         this.onChangeUserName = this.onChangeUserName.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.onChangeCategory = this.onChangeCategory.bind(this);
@@ -21,12 +20,11 @@ export default class CreatePayment extends Component{
     
 
         this.state={
-            userId:'',
             userName:'',
             paymentDate:new Date(),
             category:'',
             description:'',
-            amount:0,
+            amount:'',
             categories:[]
         }
 
@@ -40,11 +38,11 @@ export default class CreatePayment extends Component{
         })
     }
 
-    onChangeUserId(e){
+    /*onChangeUserId(e){
         this.setState({
             userId:e.target.value
         });
-    }
+    }*/
 
     onChangeUserName(e){
         this.setState({
@@ -85,10 +83,9 @@ export default class CreatePayment extends Component{
 
         e.preventDefault();
 
-        const {userId,userName,paymentDate,category,description,amount} = this.state;
+        const {userName,paymentDate,category,description,amount} = this.state;
 
         const data = {
-            userId:userId,
             userName:userName,
             description:description,
             paymentDate:paymentDate,
@@ -105,7 +102,6 @@ export default class CreatePayment extends Component{
                     alert("Payment added successfully !");
 
                     this.setState({
-                        userId:'',
                         userName:'',
                         paymentDate:'',
                         category:'',
@@ -129,40 +125,30 @@ export default class CreatePayment extends Component{
                     
                     <form className="needs-validation" noValidate onSubmit={this.onSubmit}>
                     <div className="transbox2"> 
-                    <div className="form-group" style={{marginBottom:'15px'}}>
-                      <label htmlFor="userId" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#00ffdd"}}>Enter User ID * </label>
-                        <input type="number" className="form-control" value={this.state.userId} 
-                        placeholder="Enter User ID"
-                        onChange={this.onChangeUserId}
-                        required
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#b5b5b5'}}
-                        required/><br/>
-                    </div> 
-
-                    
+                   
                     <div className="form-group" style={{marginBottom:'15px'}}>
                       <label htmlFor="userName" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#00ffdd"}}>Enter User Name * </label>
                         <input type="text" className="form-control" value={this.state.userName} 
                         placeholder="Enter User Name"
                         onChange={this.onChangeUserName}
                         required
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#b5b5b5'}}/><br/>
+                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}/><br/>
                     </div>    
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
-                      <label htmlFor="paymentDate" className="form-label" style={{marginBottom:'5px',marginLeft:20,color:"#00ffdd"}}>Choose Payment Date * </label>
+                      <label htmlFor="paymentDate" className="form-label" style={{marginBottom:'5px',marginLeft:20,color:"#00ffdd"}}>Choose Payment Date&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp; *</label>
                         <div  style={{width:950, marginLeft:20,marginRight:20,marginTop:3}}>
                                 <DatePicker
                                     selected={this.state.paymentDate}
                                     onChange={this.onChangeDate}
-                                />    
+                                />  
                         </div><br/>
                     </div>   
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
                       <label htmlFor="category" className="form-label" style={{marginBottom:'5px',marginLeft:20,color:"#00ffdd"}}>Choose Category * </label>
                         <select ref="userInput"  value={this.state.category} onChange={this.onChangeCategory}   className="form-select" aria-label="Default select example"  
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#b5b5b5'}}>
+                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}>
                             {
                                 this.state.categories.map(function(categ){
                                         return <option
@@ -181,7 +167,7 @@ export default class CreatePayment extends Component{
                         <textarea type="text" className="form-control"  value={this.state.description} 
                         placeholder="Add Payment description"
                         onChange={this.onChangeDescription}
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#b5b5b5'}}
+                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}
                         required/>
                         <br/>
                     </div>
@@ -192,7 +178,7 @@ export default class CreatePayment extends Component{
                         <input type="number" className="form-control"  value={this.state.amount}
                         placeholder="Enter Payment Amount" 
                         onChange={this.onChangeAmount} 
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#b5b5b5'}}
+                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}
                         required/>
                         <br/>
                     </div>

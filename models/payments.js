@@ -7,13 +7,6 @@ const SchemaTypes = mongoose.Schema.Types;
 
 const paymentSchema = new mongoose.Schema({
 
-    
-
-        userId:{
-            type:Number,
-            required:true
-        },
-
         userName:{
             type:String,
             required:true

@@ -8,7 +8,6 @@ export default class EditPayment extends Component{
     constructor(props){
         super(props);
 
-        this.onChangeUserId = this.onChangeUserId.bind(this);
         this.onChangeUserName = this.onChangeUserName.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.onChangeCategory = this.onChangeCategory.bind(this);
@@ -18,7 +17,6 @@ export default class EditPayment extends Component{
     
 
         this.state={
-            userId:'',
             userName:'',
             paymentDate:new Date(),
             category:'',
@@ -31,11 +29,11 @@ export default class EditPayment extends Component{
 }
 
 
-onChangeUserId(e){
+/*onChangeUserId(e){
     this.setState({
         userId:e.target.value
     });
-}
+}*/
 
 onChangeUserName(e){
     this.setState({
@@ -78,10 +76,9 @@ onChangeAmount(e){
 
         const id = this.props.match.params.id;
 
-        const {userId,userName,paymentDate,category,description,amount} = this.state;
+        const {userName,paymentDate,category,description,amount} = this.state;
 
         const data = {
-            userId:userId,
             userName:userName,
             description:description,
             paymentDate:paymentDate,
@@ -98,7 +95,6 @@ onChangeAmount(e){
                     alert("Payment updated successfully !");
 
                     this.setState({
-                        userId:'',
                         userName:'',
                         paymentDate:'',
                         category:'',
@@ -119,12 +115,11 @@ onChangeAmount(e){
 
         axios.get('http://localhost:8000/payment/'+ this.props.match.params.id).then(response=>{
                 this.setState({
-                    userId: response.data.payment.userId,
                     userName: response.data.payment.userName,
                     paymentDate: new Date(response.data.payment.paymentDate),
                     category: response.data.payment.category,
                     description: response.data.payment.description,
-                    amount: response.data.payment.amount
+                    amount: response.data.payment.amount.toFixed(2)
                 });
         })
         .catch(function(error){
@@ -151,15 +146,6 @@ onChangeAmount(e){
                     
                     <form className="needs-validation" noValidate onSubmit={this.onSubmit}>
                     <div className="transbox2"> 
-                    <div className="form-group" style={{marginBottom:'15px'}}>
-                      <label htmlFor="userId" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#00ffdd"}}>Edit User ID * </label>
-                        <input type="number" className="form-control" value={this.state.userId} 
-                        placeholder="Enter User ID"
-                        onChange={this.onChangeUserId}
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#b5b5b5'}}
-                        required/><br/>
-                    </div> 
-
 
                     
                     <div className="form-group" style={{marginBottom:'15px'}}>
@@ -167,12 +153,12 @@ onChangeAmount(e){
                         <input type="text" className="form-control" name="userName" value={this.state.userName} 
                         placeholder="Enter User Name"
                         onChange={this.onChangeUserName}
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#b5b5b5'}}
+                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}
                         required/><br/>
                     </div>    
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
-                      <label htmlFor="paymentDate" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#00ffdd"}}>Edit Payment Date * </label>
+                      <label htmlFor="paymentDate" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#00ffdd"}}>Edit Payment Date&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp; *</label>
                         <div style={{width:950, marginLeft:20,marginRight:20,marginTop:3}}> 
                                 <DatePicker
                                     selected={this.state.paymentDate}
@@ -183,8 +169,8 @@ onChangeAmount(e){
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
                       <label htmlFor="category" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#00ffdd"}}>Edit Category * </label>
-                        <select ref="userInput"  value={this.state.category} onChange={this.onChangeCategory}  className="form-control" 
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#b5b5b5'}}>
+                        <select ref="userInput"  value={this.state.category} onChange={this.onChangeCategory}   className="form-select" aria-label="Default select example" 
+                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}>
                             {
                                 this.state.categories.map(function(categ){
                                         return <option
@@ -205,7 +191,7 @@ onChangeAmount(e){
                         <textarea type="text" className="form-control"  value={this.state.description} 
                         placeholder="Add Payment description"
                          onChange={this.onChangeDescription} 
-                         style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#b5b5b5'}}
+                         style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}
                          required/>
                         <br/>
                     </div>
@@ -215,7 +201,7 @@ onChangeAmount(e){
                         <input type="number" className="form-control"  value={this.state.amount}
                         placeholder="Enter Payment Amount" 
                         onChange={this.onChangeAmount}
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#b5b5b5'}}
+                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}
                         required/>
                         <br/>
                     </div>

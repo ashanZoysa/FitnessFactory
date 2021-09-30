@@ -6,7 +6,18 @@ const router = express.Router();
 //save Expenses
 router.post('/expense/save',(req,res)=>{
 
-    let newExpense = new Expenses(req.body);
+    const expenseType = req.body.expenseType;
+    const expenseDate = Date.parse(req.body.expenseDate);
+    const expenseDescription = req.body.expenseDescription;
+    const expenseAmount = Number(req.body.expenseAmount);
+
+    const newExpense = new Expenses({
+        expenseType,
+        expenseDate,
+        expenseDescription,
+        expenseAmount
+    });
+
 
     newExpense.save((err)=>{
         if(err){

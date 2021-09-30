@@ -34,7 +34,7 @@ export default class PaymentDetails extends Component{
 
     render(){
 
-        const {userId,userName,paymentDate,category,description,amount,PaymentID}=this.state.payment;
+        const {userName,paymentDate,category,description,amount,PaymentID}=this.state.payment;
 
         return(
 
@@ -46,9 +46,6 @@ export default class PaymentDetails extends Component{
 
                 <dt className="col-sm-3" style={{color:'#00ff6a'}}>Payment ID</dt>
                 <dd className="col-sm-9" style={{color:'#00fff2'}}>{PaymentID}</dd>
-
-                <dt className="col-sm-3" style={{color:'#00ff6a'}}>User ID</dt>
-                <dd className="col-sm-9" style={{color:'#00fff2'}}>{userId}</dd>
 
                 <dt className="col-sm-3" style={{color:'#00ff6a'}}>User Name</dt>
                 <dd className="col-sm-9" style={{color:'#00fff2'}}>{userName}</dd>
@@ -63,7 +60,7 @@ export default class PaymentDetails extends Component{
                 <dd className="col-sm-9" style={{color:'#00fff2'}}>{description}</dd>
 
                 <dt className="col-sm-3" style={{color:'#00ff6a'}}>Payment Amount (LKR)</dt>
-                <dd className="col-sm-9" style={{color:'#00fff2'}}>{amount}</dd>
+                <dd className="col-sm-9" style={{color:'#00fff2'}}>{Number(amount).toFixed(2)}</dd>
 
             </dl>    
             </div>

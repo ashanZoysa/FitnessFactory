@@ -20,7 +20,7 @@ export default class CreatePayment extends Component{
             expenseType:'',
             expenseDate:new Date(),
             expenseDescription:'',
-            expenseAmount:0,
+            expenseAmount:'',
             types:[]
         }
 
@@ -108,9 +108,9 @@ export default class CreatePayment extends Component{
                     <form className="needs-validation" noValidate onSubmit={this.onSubmit}>
                      <div className="transbox2">   
                     <div className="form-group" style={{marginBottom:'15px'}}>
-                      <label htmlFor="category" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#84ff00"}}>Choose Expense Type * </label>
+                      <label htmlFor="category" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#dbfc03"}}>Choose Expense Type * </label>
                         <select ref="userInput"  value={this.state.expenseType} onChange={this.onChangeType}   className="form-select" aria-label="Default select example"
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#b5b5b5'}}>
+                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}>
                             {
                                 this.state.types.map(function(categ){
                                         return <option
@@ -126,7 +126,7 @@ export default class CreatePayment extends Component{
      
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
-                      <label htmlFor="paymentDate" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#84ff00"}}>Choose Date of Expense * </label>
+                      <label htmlFor="paymentDate" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#dbfc03"}}>Choose Date of Expense&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp; * </label>
                         <div style={{width:950, marginLeft:20,marginRight:20,marginTop:3}}>
                                 <DatePicker
                                     selected={this.state.expenseDate}
@@ -137,22 +137,22 @@ export default class CreatePayment extends Component{
   
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
-                      <label htmlFor="description" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#84ff00"}}>Enter Expense Description * </label>
+                      <label htmlFor="description" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#dbfc03"}}>Enter Expense Description * </label>
                         <textarea type="text" className="form-control"  value={this.state.expenseDescription} 
                         placeholder="Add Payment description"
                          onChange={this.onChangeDescription} 
-                         style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#b5b5b5'}}
+                         style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}
                          required/>
                         <br/>
                     </div>
                    
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
-                      <label htmlFor="amount" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#84ff00"}}>Enter Expense Amount (LKR) * </label>
+                      <label htmlFor="amount" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#dbfc03"}}>Enter Expense Amount (LKR) * </label>
                         <input type="number" className="form-control"  value={this.state.expenseAmount}
                         placeholder="Enter Payment Amount" 
                         onChange={this.onChangeAmount} 
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#b5b5b5'}}
+                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}
                         required/>
                         <br/>
                     </div>

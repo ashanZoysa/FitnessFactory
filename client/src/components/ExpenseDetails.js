@@ -57,7 +57,7 @@ export default class PaymentDetails extends Component{
                 <dd className="col-sm-9" style={{color:'#6fff00'}}>{expenseDescription}</dd>
 
                 <dt className="col-sm-3" style={{color:'#00ff6a'}}>Expense Amount (LKR)</dt>
-                <dd className="col-sm-9" style={{color:'#6fff00'}}>{expenseAmount}</dd>
+                <dd className="col-sm-9" style={{color:'#6fff00'}}>{Number(expenseAmount).toFixed(2)}</dd>
 
             </dl>    
             </div>
