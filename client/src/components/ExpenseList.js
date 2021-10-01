@@ -81,6 +81,14 @@ export default class ExpenseList extends Component {
 
   }
 
+  TotalExpenseAmount() {
+    return (this.state.expenses.reduce((totalExpense, expenses) =>
+    totalExpense = totalExpense + expenses.expenseAmount, 0.0));
+  }
+
+
+
+
 
   render() {
 
@@ -119,12 +127,15 @@ export default class ExpenseList extends Component {
           <tbody>
             {this.state.expenses.map((expenses, index) => (
               <tr key={index} style={{color:"#dbfc03"}}>
+
                 <th scope="row">{index + 1}</th>
+
                 <td>
                   <Link to={`/expense/${expenses._id}`} style={{ textDecoration: 'none' }}>
                     {expenses.ExpenseID}
                   </Link>
                 </td>
+
                 <td>{expenses.expenseType}</td>
                 <td>{Moment(expenses.expenseDate).format("YYYY-MM-DD")}</td>
                 <td>{expenses.expenseDescription}</td>
@@ -145,6 +156,14 @@ export default class ExpenseList extends Component {
           </tbody>
         </table>
         </div><br/>
+
+        <div className="transbox1">
+          <dl className="row">
+                <dt className="col-sm-3" style={{color:'#00ff6a'}}>&nbsp;&nbsp;Total&nbsp;&nbsp;Expense&nbsp;&nbsp;Amount&nbsp;&nbsp;(LKR) :</dt>
+                <dd className="col-sm-9" style={{color:'#dbfc03'}}> {this.TotalExpenseAmount().toFixed(2)}</dd>
+          </dl>
+        </div><br/><br/>     
+
 
         <button className="btn btn-success"><Link to="/addExpense" style={{ textDecoration: 'none', color: 'white' }}>Add New Expense Record</Link></button>
 

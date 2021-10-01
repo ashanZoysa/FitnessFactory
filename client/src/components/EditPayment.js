@@ -144,7 +144,7 @@ onChangeAmount(e){
             <div className="col-md-8 mt-4 mx-auto">
                     <h1 className="h3 mb-3 font-weight-normal" style={{color:"#61fffc"}}>Update Payment</h1><hr style={{color:"#61fffc"}}/>
                     
-                    <form className="needs-validation" noValidate onSubmit={this.onSubmit}>
+                    <form className="needs-validation" onSubmit={this.onSubmit}>
                     <div className="transbox2"> 
 
                     
@@ -170,7 +170,7 @@ onChangeAmount(e){
                     <div className="form-group" style={{marginBottom:'15px'}}>
                       <label htmlFor="category" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#00ffdd"}}>Edit Category * </label>
                         <select ref="userInput"  value={this.state.category} onChange={this.onChangeCategory}   className="form-select" aria-label="Default select example" 
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}>
+                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}} required>
                             {
                                 this.state.categories.map(function(categ){
                                         return <option

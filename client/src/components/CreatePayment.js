@@ -123,7 +123,7 @@ export default class CreatePayment extends Component{
                     <h1 className="h3 mb-3 font-weight-normal" style={{color:"#61fffc"}}>Add New Payment</h1><hr style={{color:"#61fffc"}}/>
 
                     
-                    <form className="needs-validation" noValidate onSubmit={this.onSubmit}>
+                    <form className="needs-validation" onSubmit={this.onSubmit}>
                     <div className="transbox2"> 
                    
                     <div className="form-group" style={{marginBottom:'15px'}}>
@@ -137,7 +137,7 @@ export default class CreatePayment extends Component{
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
                       <label htmlFor="paymentDate" className="form-label" style={{marginBottom:'5px',marginLeft:20,color:"#00ffdd"}}>Choose Payment Date&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp; *</label>
-                        <div  style={{width:950, marginLeft:20,marginRight:20,marginTop:3}}>
+                        <div  style={{width:950, marginLeft:20,marginRight:20,marginTop:3}} >
                                 <DatePicker
                                     selected={this.state.paymentDate}
                                     onChange={this.onChangeDate}
@@ -148,7 +148,7 @@ export default class CreatePayment extends Component{
                     <div className="form-group" style={{marginBottom:'15px'}}>
                       <label htmlFor="category" className="form-label" style={{marginBottom:'5px',marginLeft:20,color:"#00ffdd"}}>Choose Category * </label>
                         <select ref="userInput"  value={this.state.category} onChange={this.onChangeCategory}   className="form-select" aria-label="Default select example"  
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}>
+                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}} required>
                             {
                                 this.state.categories.map(function(categ){
                                         return <option

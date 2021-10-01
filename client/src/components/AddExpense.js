@@ -105,12 +105,12 @@ export default class CreatePayment extends Component{
                 <div className="col-md-8 mt-4 mx-auto">
                     <h1 className="h3 mb-3 font-weight-normal" style={{color:"#84ff00"}}>Add New Expense</h1><hr style={{color:"#84ff00"}}/>
 
-                    <form className="needs-validation" noValidate onSubmit={this.onSubmit}>
+                    <form className="needs-validation"  onSubmit={this.onSubmit}>
                      <div className="transbox2">   
                     <div className="form-group" style={{marginBottom:'15px'}}>
                       <label htmlFor="category" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#dbfc03"}}>Choose Expense Type * </label>
                         <select ref="userInput"  value={this.state.expenseType} onChange={this.onChangeType}   className="form-select" aria-label="Default select example"
-                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}}>
+                        style={{width:950, marginLeft:20,marginRight:20,marginTop:3,backgroundColor:'#ededed'}} required>
                             {
                                 this.state.types.map(function(categ){
                                         return <option
@@ -131,7 +131,7 @@ export default class CreatePayment extends Component{
                                 <DatePicker
                                     selected={this.state.expenseDate}
                                     onChange={this.onChangeDate}
-                                />    
+                                required/>    
                         </div><br/>
                     </div>   
   

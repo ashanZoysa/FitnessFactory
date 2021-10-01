@@ -3,7 +3,7 @@ import Moment from 'moment';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/Home.css';
-
+import { saveAs } from 'file-saver';
 
 export default class Home extends Component {
 
@@ -79,16 +79,20 @@ export default class Home extends Component {
 
 
 createAndDownloadPaymentPdf = () =>{
-    axios.post('http://localhost:8000/payments/createPdf',this.state)
+    axios.post('http://localhost:8000/payments/createPdf',this.state).then(()=>{
+      axios.get('http://localhost:8000/payments/fetchPdf',{responseType:'blob'})
+      .then((res)=>{
+          const pdfBlob = new Blob([res.data],{type:'application/pdf'});
+          saveAs(pdfBlob,'newPdf.pdf')
+      });
+    });
 }
 
 
-
-
-
-
-
-
+TotalPaymentAmount() {
+  return (this.state.payments.reduce((totalPayment, payments) =>
+  totalPayment = totalPayment + payments.amount, 0.0));
+}
 
   render() {
 
@@ -120,7 +124,6 @@ createAndDownloadPaymentPdf = () =>{
               <th scope="col">Payment ID</th>
               <th scope="col">Payment Date</th>
               <th scope="col">Payment Category</th>
-              <th scope="col">Payment Description</th>
               <th scope="col">Payment Amount (LKR)</th>
               <th scope="col">Action</th>
             </tr>
@@ -128,17 +131,20 @@ createAndDownloadPaymentPdf = () =>{
           <tbody>
             {this.state.payments.map((payments, index) => (
               <tr key={index}  style={{color:"#00fff2"}}>
+
                 <th scope="row">{index + 1}</th>
                 <td>{payments.userName}</td>
+
                 <td style={{hover:"#ff00b3",textDecoration:'none'}}>
                   <Link to={`/payment/${payments._id}`} style={{ textDecoration: 'none' }}>
                     {payments.PaymentID}
                   </Link>
                 </td>
+
                 <td>{Moment(payments.paymentDate).format("YYYY-MM-DD")}</td>
                 <td>{payments.category}</td>
-                <td>{payments.description}</td>
                 <td>{payments.amount.toFixed(2)}</td>
+
                 <td>
                   <Link className="btn btn-warning" to={`/edit/${payments._id}`}>
                     <i className="fas fa-edit"></i>&nbsp;Edit
@@ -154,8 +160,14 @@ createAndDownloadPaymentPdf = () =>{
             ))}
           </tbody>
         </table>
-        </div>
-        <br/>
+        </div><br/>
+
+        <div className="transbox1">
+          <dl className="row">
+                <dt className="col-sm-3" style={{color:'#00ff6a'}}>&nbsp;&nbsp;Total&nbsp;&nbsp;Payment&nbsp;&nbsp;Amount&nbsp;&nbsp;(LKR) :</dt>
+                <dd className="col-sm-9" style={{color:'#00fff2'}}> {this.TotalPaymentAmount().toFixed(2)}</dd>
+          </dl>
+        </div><br/><br/>
 
         <button className="btn btn-success"><Link to="/add" style={{ textDecoration: 'none', color: 'white' }}>Add New Payment Record</Link></button><br/><br/>
         <button className="btn btn-primary" onClick={this.createAndDownloadPaymentPdf}>Download PDF&nbsp;<i class="fas fa-file-download"></i></button>
