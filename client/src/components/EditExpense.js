@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 
 export default class CreatePayment extends Component{
@@ -176,7 +177,8 @@ export default class CreatePayment extends Component{
                     </div>
                     </div><br/>
                      
-                    <button type="submit" className="btn btn-success" style={{margin:'15'}} >Update Expense Record</button>
+                    <button type="submit" className="btn btn-success" style={{margin:'15'}} ><i class="far fa-edit"></i>&nbsp;&nbsp;Update Expense Record</button>&nbsp;&nbsp;
+                    <Link to="/expenses" className="btn btn-primary" style={{ textDecoration: 'none', color: 'white' }}><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back</Link>
                     
                 </form>   
             

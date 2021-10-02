@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Moment from 'moment';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 export default class PaymentDetails extends Component{
 
@@ -62,9 +63,12 @@ export default class PaymentDetails extends Component{
 
                 <dt className="col-sm-3" style={{color:'#00ff6a'}}>&nbsp;&nbsp;Expense Amount (LKR)</dt>
                 <dd className="col-sm-9" style={{color:'#dbfc03'}}>{Number(expenseAmount).toFixed(2)}</dd>
-                <br/><br/><br/>
+                <br/><br/>
 
             </dl>    
+            &nbsp;&nbsp;
+            <Link to="/expenses" className="btn btn-primary" style={{ textDecoration: 'none', color: 'white' }}><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back</Link><br/><br/>
+
             </div>
             </div>
 

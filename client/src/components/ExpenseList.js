@@ -165,7 +165,7 @@ export default class ExpenseList extends Component {
         </div><br/><br/>     
 
 
-        <button className="btn btn-success"><Link to="/addExpense" style={{ textDecoration: 'none', color: 'white' }}>Add New Expense Record</Link></button>
+        <Link to="/addExpense" className="btn btn-success" style={{ textDecoration: 'none', color: 'white' }}><i class="fas fa-plus"></i>&nbsp;&nbsp;Add New Expense Record</Link>
 
       </div>
 

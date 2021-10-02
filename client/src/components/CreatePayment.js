@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import '../styles/Home.css';
+import { Link } from 'react-router-dom'
 
 
 
@@ -185,7 +186,8 @@ export default class CreatePayment extends Component{
 
                     </div><br/>
                      
-                    <button type="submit" className="btn btn-success" style={{margin:'15'}} >Add New Payment</button>
+                    <button type="submit" className="btn btn-success" style={{margin:'15'}} ><i class="fas fa-plus"></i>&nbsp;&nbsp;Add New Payment</button>&nbsp;&nbsp;
+                    <Link to="/" className="btn btn-primary" style={{ textDecoration: 'none', color: 'white' }}><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back</Link>
                     
                 </form> 
                 
