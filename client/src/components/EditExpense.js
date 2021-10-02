@@ -123,7 +123,7 @@ export default class CreatePayment extends Component{
                 <div className="col-md-8 mt-4 mx-auto">
                     <h1 className="h3 mb-3 font-weight-normal" style={{color:"#84ff00"}}>Update Expense</h1><hr style={{color:"#84ff00"}}k/>
 
-                    <form className="needs-validation" noValidate onSubmit={this.onSubmit}>
+                    <form className="needs-validation"  onSubmit={this.onSubmit}>
                     <div className="transbox2">
                     <div className="form-group" style={{marginBottom:'15px'}}>
                       <label htmlFor="category" className="form-label" style={{marginBottom:'5px', marginLeft:20,color:"#dbfc03"}}>Choose Expense Type * </label>

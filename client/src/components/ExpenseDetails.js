@@ -45,23 +45,23 @@ export default class PaymentDetails extends Component{
             <dl className="row">
 
                 <dt className="col-sm-3" style={{color:'#00ff6a'}}>&nbsp;&nbsp;Expense ID</dt>
-                <dd className="col-sm-9" style={{color:'#6fff00'}}>{ExpenseID}</dd>
+                <dd className="col-sm-9" style={{color:'#dbfc03'}}>{ExpenseID}</dd>
                 <br/><br/><br/>
 
                 <dt className="col-sm-3" style={{color:'#00ff6a'}}>&nbsp;&nbsp;Expense Type</dt>
-                <dd className="col-sm-9" style={{color:'#6fff00'}}>{expenseType}</dd>
+                <dd className="col-sm-9" style={{color:'#dbfc03'}}>{expenseType}</dd>
                 <br/><br/><br/>
 
                 <dt className="col-sm-3" style={{color:'#00ff6a'}}>&nbsp;&nbsp;Date of Expense</dt>
-                <dd className="col-sm-9" style={{color:'#6fff00'}}>{Moment(expenseDate).format("YYYY-MM-DD")}</dd>
+                <dd className="col-sm-9" style={{color:'#dbfc03'}}>{Moment(expenseDate).format("YYYY-MM-DD")}</dd>
                 <br/><br/><br/>
 
                 <dt className="col-sm-3" style={{color:'#00ff6a'}}>&nbsp;&nbsp;Description of Expense</dt>
-                <dd className="col-sm-9" style={{color:'#6fff00'}}>{expenseDescription}</dd>
+                <dd className="col-sm-9" style={{color:'#dbfc03'}}>{expenseDescription}</dd>
                 <br/><br/><br/>
 
                 <dt className="col-sm-3" style={{color:'#00ff6a'}}>&nbsp;&nbsp;Expense Amount (LKR)</dt>
-                <dd className="col-sm-9" style={{color:'#6fff00'}}>{Number(expenseAmount).toFixed(2)}</dd>
+                <dd className="col-sm-9" style={{color:'#dbfc03'}}>{Number(expenseAmount).toFixed(2)}</dd>
                 <br/><br/><br/>
 
             </dl>    

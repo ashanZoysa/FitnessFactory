@@ -2,8 +2,8 @@ const express = require('express');
 const payments = require('../models/payments');
 const Payments = require('../models/payments');
 
-const PaymentPdf = require('html-pdf');
-const PaymentPdfTemplate = require('../documents/paymentPdf');
+//const PaymentPdf = require('html-pdf');
+//const PaymentPdfTemplate = require('../documents/paymentPdf');
 
 const router = express.Router();
 
@@ -130,8 +130,8 @@ router.delete('/payment/delete/:id',(req,res)=>{
 });
 
 //PDF Generating
-router.post('/payments/createPdf',(req,res)=>{
-    PaymentPdf.create(PaymentPdfTemplate(req.body),{}).toFile('paymentPdf.pdf',(err)=>{
+/*router.post('/payments/createPdf',(req,res)=>{
+    PaymentPdf.create(PaymentPdfTemplate(req.body),[]).toFile('paymentPdf.pdf',(err)=>{
         if(err){
             return Promise.reject();
         }
@@ -143,7 +143,7 @@ router.post('/payments/createPdf',(req,res)=>{
 
 router.get('/payments/fetchPdf',(req,res)=>{
     res.sendFile(`$__dirname/paymentPdf.pdf`)
-})
+})*/
 
 
 
