@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import '../styles/Home.css';
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router';
 
 
 
@@ -100,8 +100,6 @@ export default class CreatePayment extends Component{
 
                 if(res.data.success){
 
-                    alert("Payment added successfully !");
-
                     this.setState({
                         userName:'',
                         paymentDate:'',
@@ -113,10 +111,17 @@ export default class CreatePayment extends Component{
 
         })
 
+        alert("Payment Added Successfully !");
+        this.setState({redirect:"/"});
    }
 
 
     render(){
+
+        if(this.state.redirect){
+            return <Redirect to={this.state.redirect}/>
+        }
+
 
         return(
 
@@ -187,7 +192,7 @@ export default class CreatePayment extends Component{
                     </div><br/>
                      
                     <button type="submit" className="btn btn-success" style={{margin:'15'}} ><i class="fas fa-plus"></i>&nbsp;&nbsp;Add New Payment</button>&nbsp;&nbsp;
-                    <Link to="/" className="btn btn-primary" style={{ textDecoration: 'none', color: 'white' }}><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back</Link>
+                    
                     
                 </form> 
                 

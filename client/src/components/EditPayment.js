@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router';
 
 export default class EditPayment extends Component{
 
@@ -91,9 +91,7 @@ onChangeAmount(e){
 
         axios.put(`http://localhost:8000/payment/update/${id}`,data).then((res)=>{
 
-                if(res.data.success){
-
-                    alert("Payment updated successfully !");
+                if(res.data.success){       
 
                     this.setState({
                         userName:'',
@@ -105,6 +103,9 @@ onChangeAmount(e){
                 }
 
         })
+
+        alert("Payment Updated Successfully !");
+        this.setState({redirect:"/"});
 
    }
 
@@ -139,6 +140,10 @@ onChangeAmount(e){
 
 
     render(){
+
+        if(this.state.redirect){
+            return <Redirect to={this.state.redirect}/>
+        }
 
         return(
 
@@ -209,7 +214,7 @@ onChangeAmount(e){
                     </div><br/>
                      
                     <button type="submit" className="btn btn-success" style={{margin:'15'}} ><i class="far fa-edit"></i>&nbsp;&nbsp;Update Payment</button>&nbsp;&nbsp;
-                    <Link to="/" className="btn btn-primary" style={{ textDecoration: 'none', color: 'white' }}><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back</Link>
+                  
                     
                 </form>   
             

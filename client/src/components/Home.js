@@ -51,7 +51,7 @@ export default class Home extends Component {
 
     const result = payments.filter((payment) =>
       payment.userName.toLowerCase().includes(searchKey) ||
-      payment.description.toLowerCase().includes(searchKey)
+      payment.category.toLowerCase().includes(searchKey)
 
 
     )
@@ -172,7 +172,7 @@ TotalPaymentAmount() {
         </div><br/><br/>
 
         <Link to="/add"  className="btn btn-success" style={{ textDecoration: 'none', color: 'white' }}><i class="fas fa-plus"></i>&nbsp;&nbsp;Add New Payment Record</Link><br/><br/>
-        <button className="btn btn-primary" onClick={this.createAndDownloadPaymentPdf}>Download PDF&nbsp;<i class="fas fa-file-download"></i></button>
+        
 
       </div>
       
