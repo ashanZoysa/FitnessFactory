@@ -3,7 +3,7 @@ const payments = require('../models/payments');
 const Payments = require('../models/payments');
 
 //const PaymentPdf = require('html-pdf');
-//const PaymentPdfTemplate = require('../documents/paymentPdf');
+//onst PaymentPdfTemplate = require('../documents/paymentPdf');
 
 const router = express.Router();
 
@@ -131,7 +131,7 @@ router.delete('/payment/delete/:id',(req,res)=>{
 
 //PDF Generating
 /*router.post('/payments/createPdf',(req,res)=>{
-    PaymentPdf.create(PaymentPdfTemplate(req.body),[]).toFile('paymentPdf.pdf',(err)=>{
+    PaymentPdf.create(PaymentPdfTemplate(req.body),[]).toFile('/documents/paymentPdf.pdf',(err)=>{
         if(err){
             return Promise.reject();
         }

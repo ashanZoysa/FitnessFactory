@@ -13,6 +13,7 @@ export default class CreatePayment extends Component{
         this.onChangeDate = this.onChangeDate.bind(this);
         this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeAmount = this.onChangeAmount.bind(this);
+        this.onChangeDemo = this.onChangeDemo.bind(this);
 
     
 
@@ -62,6 +63,19 @@ export default class CreatePayment extends Component{
             expenseAmount:e.target.value
         });
     }
+
+    onChangeDemo() {
+        this.setState({
+            expenseType: "Light Bill",
+            expenseDate: new Date("2021-03-14T20:49:29.000+00:00"),
+            expenseDescription:"Paid the light bill for march",
+            expenseAmount:"7500.00"  
+        })
+    }
+
+
+
+
 
 
    onSubmit=(e)=>{
@@ -167,6 +181,8 @@ export default class CreatePayment extends Component{
                     
                     
                 </form>   
+                <br />
+                <button onClick={this.onChangeDemo} className="btn btn-primary" style={{ margin: '15' }} >&nbsp;&nbsp;Demo Expense</button>&nbsp;&nbsp;
             
             </div>
 

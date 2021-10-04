@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Moment from 'moment';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+
 
 
 export default class ExpenseList extends Component {
@@ -112,7 +114,8 @@ export default class ExpenseList extends Component {
         </div>
         <hr style={{ color: "#6fff00" }}/>
         <div className="transbox1" >
-        <table className="table table-hover" style={{ marginTop: '40px' }}>
+
+        <table id="expense-table" className="table table-hover" style={{ marginTop: '40px' }}>
           <thead  style={{color:"#00ff91"}}>
             <tr>
               <th scope="col">No.</th>
@@ -165,7 +168,14 @@ export default class ExpenseList extends Component {
         </div><br/><br/>     
 
 
-        <Link to="/addExpense" className="btn btn-success" style={{ textDecoration: 'none', color: 'white' }}><i class="fas fa-plus"></i>&nbsp;&nbsp;Add New Expense Record</Link>
+        <Link to="/addExpense" className="btn btn-success" style={{ textDecoration: 'none', color: 'white' }}><i class="fas fa-plus"></i>&nbsp;&nbsp;Add New Expense Record</Link><br/><br/>
+        <ReactHTMLTableToExcel
+          className='btn btn-primary'
+          table='expense-table'
+          filename='Expenses Excel'
+          sheet='Sheet'
+          buttonText='Generate Expenses Sheet'
+        />
 
       </div>
 
